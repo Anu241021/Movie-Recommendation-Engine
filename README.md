@@ -1,118 +1,164 @@
-# Movie-Recommendation-Engine-Engage-2022-Project
-Repository for Challenge - 3 (Algorithms) project made during Microsoft Engage 2022
+# Movie Recommendation Engine
 
-[![Generic badge](https://img.shields.io/badge/Engage-2022-Red.svg?style=for-the-badge)](https://acehacker.com/microsoft/engage2022/index.html) 
-[![Generic badge](https://img.shields.io/badge/LinkedIn-Connect-blue.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/aaheli-paul) 
-[![Generic badge](https://img.shields.io/badge/Python-Language-blue.svg?style=for-the-badge)](https://github.com/aaheli-paul/Movie-Recommendation-Engine-Engage-2022-Project) 
-[![ForTheBadge uses-git](http://ForTheBadge.com/images/badges/uses-git.svg)](https://GitHub.com/)
+A **Content-Based Movie Recommendation System** built using **Python**, **Natural Language Processing (NLP)**, and **Streamlit**. The application recommends movies similar to a user's selected movie by analyzing movie metadata such as genres, keywords, cast, crew, and overview.
 
-<br>
+The recommendation engine uses **text vectorization** and **cosine similarity** to identify movies with similar content and presents recommendations through an interactive Streamlit web interface.
 
-### Challenge - 3 : *ALGORITHMS* 
+---
 
-<br>
+## Features
 
-<!-- ABOUT THE PROJECT -->
-#### **_Problem Description_** : 
-<br>
-Sorting Algorithms play an important role in recommendation engines. By the end of the project, the following questions should be answered :
-- What role is played by sorting algorithms in recommendation engine.
-- Which sorting algorithm is used in this project and why?
+- Content-based movie recommendations
+- NLP-based feature extraction from movie metadata
+- Cosine similarity for similarity matching
+- Interactive Streamlit web application
+- Fast recommendation generation using precomputed similarity matrices
 
-In this project, i have implemented Recommendation Engine for Movies.
+---
 
+## How It Works
 
-<br><br>
-<!-- APPROACH : WHAT AND WHY -->
-#### **_Answering the questions_** :
-<br>
+The recommendation pipeline consists of the following steps:
 
-> Different approaches, choosing an approach and why.
+1. Dataset loading
+2. Data cleaning and preprocessing
+3. Feature engineering by combining relevant movie attributes
+4. Text vectorization
+5. Cosine similarity computation
+6. Recommendation generation
+7. Streamlit web interface
 
-To understand the role of sorting algorithms and make a choice, one should know the different types of filtering algorithms present. They are:
-1. Content-based filtering - In this, content is recommended to a user based on the past content-interaction of the same user.
-2. Collaborative filtering - In this, content is recommended to a user based on the similarity of that user's content-interaction to another user's content-interaction. Users with similar activities are recommeded similar contents.
-3. Hybrid filtering - This is a combination of Content-based and Collaborative filtering.
+---
 
-My objective was to implement an approach that would be :
-- relevant to the user (content similarity)
-- avoid cold start to the problem
-Therefore, content-based filtering approach has been used in this project.
+## Recommendation Approach
 
+This project uses **Content-Based Filtering**.
 
-<br><br>
-<!-- PROJECT PLANNING AND TRAJECTORY -->
-#### _Selecting the dataset_ :
-<br>
+Instead of recommending movies based on other users' preferences, it recommends movies that are similar to the selected movie by comparing their features.
 
-> Link to the dataset: https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata/discussion?select=tmdb_5000_movies.csv
+### Why Content-Based Filtering?
 
-> The datasets are also available with this repo, in a folder titled *Datasets*
+- Recommends movies with similar content
+- Does not require user ratings
+- Reduces the cold-start problem
+- Easy to understand and implement
 
-The following were the factors kept in mind while selecting the dataset :
-- Relevant and useful data
-- Different and diverse attributes (to facilitate content-based filtering approach)
-- Manageable computational load
+---
 
+## Dataset
 
-#### _Project Flow_ :
-1. Dataset Analysis
-2. Data Pre-processing
-3. Model Building (using text vectorization and cosine similarity)
-4. Model Testing
-5. Establishing web connection (using streamlit)
+This project uses the **TMDB 5000 Movie Dataset**.
 
+Dataset: https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata
 
+The repository includes:
 
-<br><br><br>
-<!-- INSTALLATIONS -->
+- `tmdb_5000_movies.csv`
+- `tmdb_5000_credits.csv`
 
-## Getting Started
-<br>
-To install and run the project on your local system, following are the requirements:
+---
 
-### Prerequisites
-Make sure you have the following libraries installed in your python environment, using the following commands :
-```sh
-  pip install ast
-  pip install nltk
-  pip install pickle
-  pip install streamlit
+## Technologies Used
+
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- NLTK
+- Streamlit
+- Pickle
+
+---
+
+## Project Structure
+
+```text
+Movie-Recommendation-Engine/
+│
+├── Datasets/
+│   ├── tmdb_5000_movies.csv
+│   └── tmdb_5000_credits.csv
+│
+├── get_recommendation.ipynb
+├── app.py
+├── similarity.pkl
+├── movie_list.pkl
+├── requirements.txt
+└── README.md
 ```
 
-<br>
+---
 
-After downloading source code files from this repo, perform the following steps:
-<br><br>
+## Installation
 
-1. Open *get_recommendation.ipynb* jupyter notebook file and change the location of datasets in the following visible lines of code :
+Clone the repository:
 
-```sh
-  movies_df = pd.read_csv('C:/Users/Aaheli Paul/Movie-Recommendation-Engine-Engage-2022-Project/Datasets/tmdb_5000_movies.csv')
-  credits_df = pd.read_csv('C:/Users/Aaheli Paul/Movie-Recommendation-Engine-Engage-2022-Project/Datasets/tmdb_5000_credits.csv')
+```bash
+git clone <repository-url>
+cd Movie-Recommendation-Engine
 ```
 
-<br>
+Install the required dependencies:
 
-2. Run and execute the *get_recommendation.ipynb* jupyter notebook file or run the following command on command prompt:
-
-```sh
-  python get_recommendation.ipynb
-```
-> After completing the execution of this file, there will be two files downloaded to the main folder : movie_list.pkl, similarity.pkl
-
-> These files will be used during the execution of *app.py* file.
-
-<br>
-
-3. After entering the source code folder, run the following command on command prompt, to locally host the webpage
-
-```sh
-  streamlit run app.py
+```bash
+pip install -r requirements.txt
 ```
 
-<br>
+Or install them individually:
 
-[![GitHub repo size](https://img.shields.io/github/repo-size/aaheli-paul/Movie-Recommendation-Engine-Engage-2022-Project.svg?logo=github&style=social)](https://github.com/aaheli-paul)
-[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/aaheli-paul/Movie-Recommendation-Engine-Engage-2022-Project.svg?logo=git&style=social)](https://github.com/aaheli-paul/)
-[![GitHub top language](https://img.shields.io/github/languages/top/aaheli-paul/Movie-Recommendation-Engine-Engage-2022-Project.svg?logo=python&style=social)](https://github.com/aaheli-paul)
+```bash
+pip install pandas numpy scikit-learn nltk streamlit
+```
+
+---
+
+## Running the Project
+
+### Step 1: Generate Recommendation Files
+
+Open and run:
+
+```text
+get_recommendation.ipynb
+```
+
+This notebook processes the dataset and generates:
+
+- `movie_list.pkl`
+- `similarity.pkl`
+
+### Step 2: Launch the Streamlit App
+
+```bash
+streamlit run app.py
+```
+
+The application will launch locally in your browser.
+
+---
+
+## Recommendation Method
+
+The recommendation engine follows these steps:
+
+- Combine important movie features into a single text representation.
+- Clean and preprocess the text.
+- Convert the text into numerical vectors using text vectorization.
+- Compute cosine similarity between movie vectors.
+- Sort similarity scores to recommend the most similar movies.
+
+---
+
+## Future Improvements
+
+- TMDB API integration for movie posters and additional details
+- Hybrid recommendation system
+- Personalized recommendations based on user history
+- Genre and language filters
+- Deployment on Streamlit Cloud
+
+---
+
+## License
+
+This project is intended for educational and learning purposes.
